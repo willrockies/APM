@@ -19,13 +19,18 @@ import { WelcomeComponent } from './home/welcome.component';
     StarComponent,
     ConvertToSpacesPipe,
     ProductDetailComponent,
-    WelcomeComponent
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule.forRoot([
+      { path: 'products', component: ProductListComponent },
+      { path: 'products/:id', component: ProductDetailComponent },
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+    ])
   ],
   bootstrap: [AppComponent]
 })
